@@ -6,9 +6,11 @@ lxc exec redis -- /bin/ash
 
 echo "https://nl.alpinelinux.org/alpine/latest-stable/community" | tee -a /etc/apk/repository
 
-apk update && apk upgrade && apk --no-cache --update add redis 
+apk update && apk upgrade 
 
-sed 's/^bind /# bind /' -i /etc/redis/redis.conf
+apk --no-cache --update add redis 
+
+sed 's/^bind /# bind /' -i /etc/redis.conf 
 
 sed -i 's#daemonize yes#daemonize no#i' /etc/redis.conf 
 
