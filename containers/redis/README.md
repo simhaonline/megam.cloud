@@ -20,6 +20,6 @@ netstat -ln | grep 6379
 netstat -lnp | grep redis
 
 ## On Host
-iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 6379 -j DNAT --to 10.69.45.159:6379
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 6379 -j DNAT --to ${CONTAINER_IP}:6379
 
 sudo bash -c 'iptables-save > /etc/iptables/rules.v4' # iptables-restore  /etc/iptables/rules.v4
